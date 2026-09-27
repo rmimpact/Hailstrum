@@ -1,0 +1,361 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Theme switching
+   The <html> element carries data-theme="light" | "dark". An inline script in
+   the document head sets it before first paint, from localStorage if the user
+   has chosen, otherwise from the operating system. So the site matches the
+   device by default and there is never a flash of the wrong theme.
+--------------------------------------------------------------------------- */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  /* Surfaces */
+  --bg: #fbfcfb;
+  --bg-subtle: #f1f5f2;
+  --surface: #ffffff;
+  --surface-2: #f7faf8;
+
+  /* Text */
+  --ink: #0e1a22;
+  --ink-body: #33454f;
+  --ink-muted: #667a83;
+
+  /* Lines */
+  --line: #e3e9e6;
+  --line-strong: #cad5cf;
+
+  /* Brand — sampled from the Hailstrum mark */
+  --accent: #568366;
+  --accent-ink: #3d6b4d; /* darkened so body-copy links clear AA on white */
+  --accent-soft: #eaf2ed;
+  --accent-contrast: #ffffff;
+
+  /* Deep navy, used for inverted sections in both themes */
+  --navy: #101c2b;
+  --navy-2: #182842;
+  --navy-line: #2a3d55;
+  --on-navy: #e9f0f6;
+  --on-navy-muted: #9aafc1;
+  --on-navy-accent: #7db88e;
+
+  /* Chart series. The logo green is too low-chroma to read as a data mark
+     (it validates as "reads gray"), so plotted marks use a higher-chroma step
+     of the same hue. Both steps pass the palette checks against their surface. */
+  --chart-series: #3d8a56;
+  --chart-grid: #e6ebe8;
+
+  --ring: #568366;
+  --shadow-color: 150 20% 12%;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0e1a2a;
+  --bg-subtle: #122134;
+  --surface: #16283e;
+  --surface-2: #1c3049;
+
+  --ink: #eaf1f7;
+  --ink-body: #c4d4e1;
+  --ink-muted: #8fa5b8;
+
+  --line: #253952;
+  --line-strong: #33496a;
+
+  --accent: #7db88e;
+  --accent-ink: #92c8a2;
+  --accent-soft: #172f24;
+  --accent-contrast: #0b1a12;
+
+  --navy: #0a1422;
+  --navy-2: #122134;
+  --navy-line: #24374e;
+  --on-navy: #e9f0f6;
+  --on-navy-muted: #93a9bc;
+  --on-navy-accent: #7db88e;
+
+  --chart-series: #5aa570;
+  --chart-grid: #22364d;
+
+  --ring: #7db88e;
+  --shadow-color: 215 60% 3%;
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+
+  --color-ink: var(--ink);
+  --color-ink-body: var(--ink-body);
+  --color-ink-muted: var(--ink-muted);
+
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-contrast: var(--accent-contrast);
+
+  --color-chart-series: var(--chart-series);
+  --color-chart-grid: var(--chart-grid);
+
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-navy-line: var(--navy-line);
+  --color-on-navy: var(--on-navy);
+  --color-on-navy-muted: var(--on-navy-muted);
+  --color-on-navy-accent: var(--on-navy-accent);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+
+  --radius-card: 14px;
+
+  --shadow-soft: 0 1px 2px hsl(var(--shadow-color) / 0.05),
+    0 6px 18px -8px hsl(var(--shadow-color) / 0.12);
+  --shadow-lift: 0 2px 4px hsl(var(--shadow-color) / 0.06),
+    0 16px 40px -16px hsl(var(--shadow-color) / 0.2);
+}
+
+/* --------------------------------------------------------------------------- */
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink-body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Keep the sticky header from covering anchor targets. */
+  :target {
+    scroll-margin-top: 6rem;
+  }
+}
+
+@layer components {
+  /* Page gutter + max width, used by every section on the site. */
+  .container-page {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Small uppercase technical label, e.g. "01 / MISSION" */
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+  }
+
+  .prose-body {
+    color: var(--ink-body);
+    line-height: 1.7;
+  }
+
+  .prose-body a {
+    color: var(--accent-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* Reveal-on-scroll. Elements start hidden only when the browser can animate
+   and JS is running; otherwise they are visible from the start. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  [data-reveal][data-revealed="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Rendered post bodies (output of src/lib/markdown.ts)
+--------------------------------------------------------------------------- */
+@layer components {
+  .post-body {
+    color: var(--ink-body);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+
+  .post-body > * + * {
+    margin-top: 1.25em;
+  }
+
+  .post-body h2,
+  .post-body h3,
+  .post-body h4,
+  .post-body h5 {
+    margin-top: 2.25em;
+    margin-bottom: -0.35em;
+    line-height: 1.3;
+  }
+
+  .post-body h2 {
+    font-size: 1.5rem;
+  }
+  .post-body h3 {
+    font-size: 1.25rem;
+  }
+  .post-body h4,
+  .post-body h5 {
+    font-size: 1.0625rem;
+  }
+
+  .post-body a {
+    color: var(--accent-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .post-body strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .post-body ul,
+  .post-body ol {
+    padding-left: 1.4em;
+  }
+
+  .post-body ul {
+    list-style: disc;
+  }
+  .post-body ol {
+    list-style: decimal;
+  }
+
+  .post-body li + li {
+    margin-top: 0.4em;
+  }
+
+  .post-body li::marker {
+    color: var(--accent);
+  }
+
+  .post-body blockquote {
+    border-left: 2px solid var(--accent);
+    padding-left: 1.15em;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .post-body blockquote p + p {
+    margin-top: 0.75em;
+  }
+
+  .post-body code {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 0.12em 0.38em;
+    font-size: 0.875em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  .post-body pre {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.1em 1.25em;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .post-body pre code {
+    background: none;
+    border: 0;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  .post-body img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+  }
+
+  .post-body hr {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin-block: 2.5em;
+  }
+}
