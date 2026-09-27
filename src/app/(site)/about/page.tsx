@@ -22,7 +22,7 @@ import {
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Four first-year engineering students at UTS building autonomous logistics aircraft. Our roadmap, our team, and where we are today.",
+    "The team behind Hailstrum Robotics, our six-stage roadmap, and where the company is today.",
 };
 
 export default function AboutPage() {
@@ -44,7 +44,7 @@ function PageHero() {
         <Reveal>
           <Badge>About</Badge>
           <h1 className="mt-5 max-w-3xl text-[2.25rem] leading-[1.08] tracking-[-0.03em] md:text-[3.25rem]">
-            Four students, one airframe, and a stubborn engineering problem.
+            One airframe, and a stubborn engineering problem.
           </h1>
           <p className="mt-6 max-w-2xl text-[1.0625rem] leading-relaxed text-ink-body">
             Hailstrum started at {company.university} in 2023 as a research
@@ -213,11 +213,11 @@ function Team() {
         <SectionHeading
           eyebrow="The team"
           title="Co-founders"
-          body="All four of us are first-year engineering students at UTS. We build this around coursework, mostly at night."
+          body="Second-year engineering students at UTS, building this around coursework, mostly at night."
         />
       </Reveal>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid max-w-3xl gap-6 sm:grid-cols-2">
         {team.map((person, i) => (
           <Reveal key={person.name} delay={i * 80}>
             <Card hover className="h-full">
@@ -253,7 +253,6 @@ function Numbers() {
           eyebrow="The model"
           title="Where this goes if it works"
           body="Figures below are projections from our ten-year model, not results. We are pre-revenue."
-          onNavy
         />
       </Reveal>
 
@@ -264,14 +263,13 @@ function Numbers() {
               value={item.value}
               label={item.label}
               note={item.note}
-              onNavy
             />
           </Reveal>
         ))}
       </div>
 
-      <div className="mt-14 border-t border-navy-line pt-10">
-        <ButtonLink href="/contact" variant="on-navy">
+      <div className="mt-14 border-t border-line pt-10">
+        <ButtonLink href="/contact" variant="subtle">
           Request the full deck
           <ArrowRight />
         </ButtonLink>

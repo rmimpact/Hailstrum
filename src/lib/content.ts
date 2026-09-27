@@ -230,21 +230,11 @@ export const team = [
   {
     name: "Chirag Murali",
     role: "Co-founder & CEO",
-    detail: "First-year mechatronic engineering student.",
+    detail: "Second-year mechatronic engineering student.",
   },
   {
     name: "Prithvi Thakre",
     role: "Co-founder",
-    detail: "First-year software engineering student and a big fan of aeronautics.",
-  },
-  {
-    name: "Oscar Peer",
-    role: "Co-founder",
-    detail: "First-year software engineering student.",
-  },
-  {
-    name: "Remy Moscovitz",
-    role: "Co-founder",
-    detail: "First-year software engineering student.",
+    detail: "Second-year software engineering student and a big fan of aeronautics.",
   },
 ] as const;

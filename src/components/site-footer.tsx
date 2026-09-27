@@ -5,21 +5,21 @@ import { company, nav } from "@/lib/content";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto bg-navy text-on-navy">
+    <footer className="mt-auto bg-bg-deep">
       <div className="container-page py-14 md:py-16">
         <div className="grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
           <div>
-            <Logo onNavy />
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-on-navy-muted">
+            <Logo />
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-muted">
               {company.shortDescription}
             </p>
-            <p className="mt-4 font-display text-xs uppercase tracking-[0.12em] text-on-navy-muted">
+            <p className="mt-4 font-display text-xs uppercase tracking-[0.12em] text-ink-muted">
               {company.location}
             </p>
           </div>
 
           <nav aria-label="Footer">
-            <h2 className="font-display text-xs font-semibold uppercase tracking-[0.12em] !text-on-navy">
+            <h2 className="font-display text-xs font-semibold uppercase tracking-[0.12em] !text-ink">
               Site
             </h2>
             <ul className="mt-4 space-y-2.5">
@@ -27,7 +27,7 @@ export function SiteFooter() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-on-navy-muted transition-colors hover:text-on-navy"
+                    className="text-sm text-ink-muted transition-colors hover:text-ink"
                   >
                     {item.label}
                   </Link>
@@ -37,7 +37,7 @@ export function SiteFooter() {
           </nav>
 
           <div>
-            <h2 className="font-display text-xs font-semibold uppercase tracking-[0.12em] !text-on-navy">
+            <h2 className="font-display text-xs font-semibold uppercase tracking-[0.12em] !text-ink">
               Connect
             </h2>
             <ul className="mt-4 space-y-2.5">
@@ -46,7 +46,7 @@ export function SiteFooter() {
                   href={company.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-on-navy-muted transition-colors hover:text-on-navy"
+                  className="inline-flex items-center gap-2 text-sm text-ink-muted transition-colors hover:text-ink"
                 >
                   <InstagramIcon />
                   {company.instagramHandle}
@@ -56,7 +56,7 @@ export function SiteFooter() {
                 <li>
                   <a
                     href={`mailto:${company.email}`}
-                    className="text-sm text-on-navy-muted transition-colors hover:text-on-navy"
+                    className="text-sm text-ink-muted transition-colors hover:text-ink"
                   >
                     {company.email}
                   </a>
@@ -66,14 +66,14 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-navy-line pt-6 text-xs text-on-navy-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-3 border-t border-line pt-6 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {company.name}. Built at{" "}
             {company.university}.
           </p>
           <Link
             href="/admin"
-            className="transition-colors hover:text-on-navy"
+            className="transition-colors hover:text-ink"
           >
             Team login
           </Link>

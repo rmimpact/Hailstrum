@@ -178,18 +178,17 @@ function Mission() {
         <SectionHeading
           eyebrow={mission.eyebrow}
           title={mission.heading}
-          onNavy
         />
       </Reveal>
 
-      <div className="mt-12 grid gap-px overflow-hidden rounded-card border border-navy-line bg-navy-line md:grid-cols-3">
+      <div className="mt-12 grid gap-px overflow-hidden rounded-card border border-line bg-line md:grid-cols-3">
         {mission.items.map((item, i) => (
-          <Reveal key={item.number} delay={i * 90} className="bg-navy p-7">
-            <p className="font-display text-sm font-semibold tracking-[0.1em] text-on-navy-accent">
+          <Reveal key={item.number} delay={i * 90} className="bg-bg-deep p-7">
+            <p className="font-display text-sm font-semibold tracking-[0.1em] text-accent">
               {item.number}
             </p>
-            <h3 className="mt-4 text-lg !text-on-navy">{item.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-on-navy-muted">
+            <h3 className="mt-4 text-lg !text-ink">{item.title}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink-muted">
               {item.body}
             </p>
           </Reveal>
@@ -313,16 +312,16 @@ function ClosingCta() {
   return (
     <Section tone="navy">
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-[1.75rem] !text-on-navy md:text-[2.25rem]">
+        <h2 className="text-[1.75rem] !text-ink md:text-[2.25rem]">
           Moving freight, hiring, or funding hard engineering?
         </h2>
-        <p className="mt-4 text-on-navy-muted">
+        <p className="mt-4 text-ink-muted">
           We’re looking for logistics operators to test with, and for people who
           want to build autonomous aircraft in Sydney.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <ButtonLink href="/contact">Get in touch</ButtonLink>
-          <ButtonLink href={company.instagram} variant="on-navy" external>
+          <ButtonLink href={company.instagram} variant="subtle" external>
             Follow the build
           </ButtonLink>
         </div>

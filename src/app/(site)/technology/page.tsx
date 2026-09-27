@@ -203,25 +203,24 @@ function Gnc() {
             eyebrow="GNC"
             title="Reliability is the product"
             body="An autonomous aircraft carrying someone else's freight has to be predictable before it is impressive. Our embedded Guidance, Navigation and Control stack is the part a logistics operator is really buying."
-            onNavy
           />
-          <ButtonLink href="/contact" variant="on-navy" className="mt-8">
+          <ButtonLink href="/contact" variant="subtle" className="mt-8">
             Talk to the team
             <ArrowRight />
           </ButtonLink>
         </Reveal>
 
         <Reveal delay={120}>
-          <ol className="space-y-px overflow-hidden rounded-card border border-navy-line bg-navy-line">
+          <ol className="space-y-px overflow-hidden rounded-card border border-line bg-line">
             {layers.map((layer, i) => (
-              <li key={layer.title} className="bg-navy p-7">
+              <li key={layer.title} className="bg-bg-deep p-7">
                 <div className="flex items-baseline gap-4">
-                  <span className="font-display text-sm font-semibold tabular-nums text-on-navy-accent">
+                  <span className="font-display text-sm font-semibold tabular-nums text-accent">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <h3 className="text-lg !text-on-navy">{layer.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-on-navy-muted">
+                    <h3 className="text-lg !text-ink">{layer.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-muted">
                       {layer.body}
                     </p>
                   </div>

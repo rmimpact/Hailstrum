@@ -3,7 +3,7 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 /* --------------------------------- buttons -------------------------------- */
 
-type Variant = "primary" | "outline" | "ghost" | "on-navy";
+type Variant = "primary" | "outline" | "ghost" | "subtle";
 type Size = "sm" | "md";
 
 const BASE =
@@ -20,8 +20,8 @@ const VARIANTS: Record<Variant, string> = {
   outline:
     "border border-line-strong bg-surface text-ink hover:border-accent hover:text-accent-ink",
   ghost: "text-ink-body hover:bg-surface-2 hover:text-ink",
-  "on-navy":
-    "border border-navy-line bg-white/5 text-on-navy backdrop-blur hover:bg-white/10 hover:border-on-navy-muted",
+  subtle:
+    "border border-line bg-white/5 text-ink backdrop-blur hover:bg-white/10 hover:border-line-strong",
 };
 
 function classes(variant: Variant, size: Size, extra = "") {
@@ -93,7 +93,7 @@ export function Section({
   const tones = {
     default: "bg-bg",
     subtle: "bg-bg-subtle",
-    navy: "bg-navy text-on-navy",
+    navy: "bg-bg-deep",
   };
 
   return (
@@ -108,36 +108,24 @@ export function SectionHeading({
   title,
   body,
   align = "left",
-  onNavy = false,
   className = "",
 }: {
   eyebrow?: string;
   title: ReactNode;
   body?: ReactNode;
   align?: "left" | "center";
-  onNavy?: boolean;
   className?: string;
 }) {
   return (
     <div
       className={`${align === "center" ? "mx-auto text-center" : ""} max-w-2xl ${className}`}
     >
-      {eyebrow && (
-        <p className={`eyebrow ${onNavy ? "!text-on-navy-accent" : ""}`}>{eyebrow}</p>
-      )}
-      <h2
-        className={`mt-3 text-[1.75rem] leading-[1.15] md:text-[2.5rem] ${
-          onNavy ? "!text-on-navy" : ""
-        }`}
-      >
+      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+      <h2 className="mt-3 text-[1.75rem] leading-[1.15] md:text-[2.5rem]">
         {title}
       </h2>
       {body && (
-        <p
-          className={`mt-4 text-[1.0625rem] leading-relaxed ${
-            onNavy ? "text-on-navy-muted" : "text-ink-body"
-          }`}
-        >
+        <p className="mt-4 text-[1.0625rem] leading-relaxed text-ink-body">
           {body}
         </p>
       )}
@@ -175,44 +163,34 @@ export function Stat({
   unit,
   label,
   note,
-  onNavy = false,
 }: {
   value: string;
   unit?: string;
   label: string;
   note?: string;
-  onNavy?: boolean;
 }) {
   return (
     <div>
       <p
-        className={`font-display text-[2rem] font-semibold leading-none tracking-[-0.03em] md:text-[2.5rem] ${
-          onNavy ? "text-on-navy" : "text-ink"
-        }`}
+        className={`font-display text-[2rem] font-semibold leading-none tracking-[-0.03em] md:text-[2.5rem]`}
       >
         {value}
         {unit && (
           <span
-            className={`ml-1 align-top text-[0.5em] font-medium ${
-              onNavy ? "text-on-navy-accent" : "text-accent-ink"
-            }`}
+            className={`ml-1 align-top text-[0.5em] font-medium`}
           >
             {unit}
           </span>
         )}
       </p>
       <p
-        className={`mt-2.5 text-sm font-medium ${
-          onNavy ? "text-on-navy" : "text-ink"
-        }`}
+        className={`mt-2.5 text-sm font-medium`}
       >
         {label}
       </p>
       {note && (
         <p
-          className={`mt-0.5 text-xs ${
-            onNavy ? "text-on-navy-muted" : "text-ink-muted"
-          }`}
+          className={`mt-0.5 text-xs`}
         >
           {note}
         </p>

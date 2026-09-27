@@ -5,7 +5,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
 
 import { Logo } from "@/components/logo";
-import { ThemeToggle } from "@/components/theme";
 import { Button, ButtonLink } from "@/components/ui";
 import { Notice } from "@/components/form";
 import { useAuth } from "@/lib/auth-context";
@@ -107,7 +106,6 @@ export function AdminShell({
               <span className="hidden text-xs text-ink-muted md:inline">
                 {user.email}
               </span>
-              <ThemeToggle />
               <Button size="sm" variant="outline" onClick={() => void signOut()}>
                 Sign out
               </Button>

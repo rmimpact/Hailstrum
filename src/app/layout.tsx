@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 
-import { themeBootstrapScript } from "@/components/theme";
 import { company } from "@/lib/content";
 import "./globals.css";
 
@@ -69,24 +68,16 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbfcfb" },
-    { media: "(prefers-color-scheme: dark)", color: "#0e1a2a" },
-  ],
+  // The site is dark only, so the browser chrome matches it unconditionally.
+  themeColor: "#0a121c",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-AU"
-      suppressHydrationWarning
       className={`${inter.variable} ${spaceGrotesk.variable} h-full`}
     >
-      <head>
-        {/* Sets data-theme before first paint so a dark-mode device never
-            flashes a white page. */}
-        <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
-      </head>
       <body className="flex min-h-full flex-col">
         <a
           href="#main"

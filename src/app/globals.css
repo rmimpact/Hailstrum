@@ -1,92 +1,52 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Theme switching
-   The <html> element carries data-theme="light" | "dark". An inline script in
-   the document head sets it before first paint, from localStorage if the user
-   has chosen, otherwise from the operating system. So the site matches the
-   device by default and there is never a flash of the wrong theme.
+   Hailstrum Robotics — single dark theme.
+
+   The brand is a white wordmark on near-black navy, so the site commits to
+   that world rather than shipping two themes. Every colour is set explicitly
+   and `color-scheme: dark` keeps native controls and scrollbars in step.
 --------------------------------------------------------------------------- */
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root {
-  /* Surfaces */
-  --bg: #fbfcfb;
-  --bg-subtle: #f1f5f2;
-  --surface: #ffffff;
-  --surface-2: #f7faf8;
+  color-scheme: dark;
+
+  /* Surfaces, darkest to lightest */
+  --bg: #0a121c;
+  --bg-deep: #060e17;
+  --bg-subtle: #0e1826;
+  --surface: #132234;
+  --surface-2: #18293d;
 
   /* Text */
-  --ink: #0e1a22;
-  --ink-body: #33454f;
-  --ink-muted: #667a83;
+  --ink: #f3f7fb;
+  --ink-body: #bdcede;
+  --ink-muted: #8296ab;
 
   /* Lines */
-  --line: #e3e9e6;
-  --line-strong: #cad5cf;
+  --line: #1f3247;
+  --line-strong: #2b4359;
 
-  /* Brand — sampled from the Hailstrum mark */
-  --accent: #568366;
-  --accent-ink: #3d6b4d; /* darkened so body-copy links clear AA on white */
-  --accent-soft: #eaf2ed;
-  --accent-contrast: #ffffff;
+  /* Gold accent */
+  --accent: #d7b65d;
+  --accent-ink: #d7b65d;
+  --accent-soft: #1a2436;
+  --accent-line: #4a4636;
+  --accent-contrast: #0a121c;
 
-  /* Deep navy, used for inverted sections in both themes */
-  --navy: #101c2b;
-  --navy-2: #182842;
-  --navy-line: #2a3d55;
-  --on-navy: #e9f0f6;
-  --on-navy-muted: #9aafc1;
-  --on-navy-accent: #7db88e;
+  /* Chart series. The brand gold is too light to sit in the dark-mode
+     lightness band as a data mark, so plots use a deeper step of the same
+     hue; it clears the palette checks against the card surface. */
+  --chart-series: #b28d21;
+  --chart-grid: #1d2f42;
 
-  /* Chart series. The logo green is too low-chroma to read as a data mark
-     (it validates as "reads gray"), so plotted marks use a higher-chroma step
-     of the same hue. Both steps pass the palette checks against their surface. */
-  --chart-series: #3d8a56;
-  --chart-grid: #e6ebe8;
-
-  --ring: #568366;
-  --shadow-color: 150 20% 12%;
-
-  color-scheme: light;
-}
-
-[data-theme="dark"] {
-  --bg: #0e1a2a;
-  --bg-subtle: #122134;
-  --surface: #16283e;
-  --surface-2: #1c3049;
-
-  --ink: #eaf1f7;
-  --ink-body: #c4d4e1;
-  --ink-muted: #8fa5b8;
-
-  --line: #253952;
-  --line-strong: #33496a;
-
-  --accent: #7db88e;
-  --accent-ink: #92c8a2;
-  --accent-soft: #172f24;
-  --accent-contrast: #0b1a12;
-
-  --navy: #0a1422;
-  --navy-2: #122134;
-  --navy-line: #24374e;
-  --on-navy: #e9f0f6;
-  --on-navy-muted: #93a9bc;
-  --on-navy-accent: #7db88e;
-
-  --chart-series: #5aa570;
-  --chart-grid: #22364d;
-
-  --ring: #7db88e;
-  --shadow-color: 215 60% 3%;
-
-  color-scheme: dark;
+  --ring: #d7b65d;
+  --shadow-color: 215 60% 2%;
 }
 
 @theme inline {
   --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
   --color-bg-subtle: var(--bg-subtle);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
@@ -101,17 +61,11 @@
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-line: var(--accent-line);
   --color-accent-contrast: var(--accent-contrast);
 
   --color-chart-series: var(--chart-series);
   --color-chart-grid: var(--chart-grid);
-
-  --color-navy: var(--navy);
-  --color-navy-2: var(--navy-2);
-  --color-navy-line: var(--navy-line);
-  --color-on-navy: var(--on-navy);
-  --color-on-navy-muted: var(--on-navy-muted);
-  --color-on-navy-accent: var(--on-navy-accent);
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif,
@@ -119,10 +73,10 @@
 
   --radius-card: 14px;
 
-  --shadow-soft: 0 1px 2px hsl(var(--shadow-color) / 0.05),
-    0 6px 18px -8px hsl(var(--shadow-color) / 0.12);
-  --shadow-lift: 0 2px 4px hsl(var(--shadow-color) / 0.06),
-    0 16px 40px -16px hsl(var(--shadow-color) / 0.2);
+  --shadow-soft: 0 1px 2px hsl(var(--shadow-color) / 0.4),
+    0 10px 30px -12px hsl(var(--shadow-color) / 0.65);
+  --shadow-lift: 0 2px 4px hsl(var(--shadow-color) / 0.45),
+    0 20px 46px -18px hsl(var(--shadow-color) / 0.8);
 }
 
 /* --------------------------------------------------------------------------- */

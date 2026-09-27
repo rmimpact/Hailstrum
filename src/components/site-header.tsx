@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Logo } from "./logo";
-import { ThemeToggle } from "./theme";
 import { ButtonLink } from "./ui";
 import { nav } from "@/lib/content";
 
@@ -84,7 +83,6 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <ThemeToggle />
 
             {/* Wrapped rather than given `hidden sm:inline-flex` directly: the
                 button's own `inline-flex` is the same CSS property, so which

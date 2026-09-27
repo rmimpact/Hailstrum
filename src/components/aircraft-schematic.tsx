@@ -102,8 +102,8 @@ export function AircraftSchematic({ className = "" }: { className?: string }) {
             cx={r.x}
             cy={r.y}
             r="42"
-            stroke="currentColor"
-            strokeOpacity="0.22"
+            stroke="var(--accent)"
+            strokeOpacity="0.28"
             strokeWidth="1.2"
           />
           <g
@@ -118,25 +118,25 @@ export function AircraftSchematic({ className = "" }: { className?: string }) {
               cx={r.x}
               cy={r.y}
               r="34"
-              stroke="currentColor"
-              strokeOpacity="0.45"
+              stroke="var(--accent)"
+              strokeOpacity="0.6"
               strokeWidth="2"
               strokeDasharray="30 18"
               strokeLinecap="round"
             />
           </g>
-          <circle cx={r.x} cy={r.y} r="5" fill="currentColor" fillOpacity="0.5" />
+          <circle cx={r.x} cy={r.y} r="5" fill="var(--accent)" fillOpacity="0.7" />
         </g>
       ))}
 
       {/* Rear pusher propeller, seen edge-on from above */}
-      <g stroke="currentColor" strokeLinecap="round">
+      <g stroke="var(--accent)" strokeLinecap="round">
         <line
           x1="266"
           y1="382"
           x2="334"
           y2="382"
-          strokeOpacity="0.5"
+          strokeOpacity="0.6"
           strokeWidth="2"
         />
         <line
@@ -144,11 +144,11 @@ export function AircraftSchematic({ className = "" }: { className?: string }) {
           y1="382"
           x2="326"
           y2="382"
-          strokeOpacity="0.22"
+          strokeOpacity="0.25"
           strokeWidth="7"
         />
       </g>
-      <circle cx="300" cy="382" r="4" fill="currentColor" fillOpacity="0.6" />
+      <circle cx="300" cy="382" r="4" fill="var(--accent)" fillOpacity="0.7" />
 
       {/* Callouts */}
       <g
